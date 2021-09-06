@@ -1,1 +1,18 @@
-<p>product-details works!</p>
+<div>
+    <h2>{{product.name}}</h2>
+    <p>{{product.status}}</p>
+</div>
+
+<!--NG CONTAINER-->
+<ng-container *ngIf="product.quantity > 0; then templateThen else templateElse"></ng-container>
+
+<ng-template #templateThen>
+    <div>
+        <app-alert-product-details [isEnabledToBuy]="isEnabledToBuy" (clickAlert)="showAlert()" [product]="product">
+        </app-alert-product-details>
+    </div>
+</ng-template>
+
+<ng-template #templateElse>
+    <p>Product is not available to buy</p>
+</ng-template>

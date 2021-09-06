@@ -1,5 +1,9 @@
 <h1>Fundamentals</h1>
 
+<div>
+  <button (click)="changeBuyingStatus()">Enable/Disable purchase</button>
+</div>
+
 <div *ngFor="let product of products">
-  <app-product-details [product]="product"></app-product-details>
+  <app-product-details [isEnabledToBuy]="isEnabledToBuy" [product]="product"></app-product-details>
 </div>

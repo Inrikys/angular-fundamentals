@@ -11,23 +11,12 @@ import { ProductsService } from './services/products/products.service';
 export class AppComponent implements OnInit {
   title = 'ecommerce-angular-fundamentals';
 
-  products!: Product[];
-  isEnabledToBuy: boolean = true;
-
   constructor(
-    private ProductsService: ProductsService
+
   ) { }
 
   ngOnInit(): void {
-    this.getProducts();
-  }
 
-  getProducts() {
-    this.products = this.ProductsService.getProducts();
-  }
-
-  changeBuyingStatus(){
-    this.isEnabledToBuy = !this.isEnabledToBuy;
   }
 
 }

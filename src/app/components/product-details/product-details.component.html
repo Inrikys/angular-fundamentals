@@ -1,25 +1,29 @@
-<div class="d-flex justify-content-between align-items-center">
-    <div>
+<div class="row">
+    <div class="col-6 m-auto">
         <a [routerLink]="['/product', product?.id]">{{product?.name}}</a>
         <p class="m-0">{{product?.price}}</p>
         <p>{{product?.status}}</p>
+
+        <!--NG CONTAINER-->
+        <ng-container *ngIf="product.quantity > 0; then templateThen else templateElse"></ng-container>
+
+        <ng-template #templateThen>
+            <div>
+                <app-alert-product-details [isEnabledToBuy]="isEnabledToBuy" (clickAlert)="showAlert()"
+                    [product]="product">
+                </app-alert-product-details>
+            </div>
+        </ng-template>
+
+        <ng-template #templateElse>
+            <p>Product is not available to buy</p>
+        </ng-template>
+
     </div>
 
-    <div>
-        <img class="rounded" src="{{product?.imgaddress}}">
+    <div class="col-6 m-auto text-center">
+        <div class="w-100">
+            <img class="rounded w-100" src="{{product?.imgaddress}}">
+        </div>
     </div>
 </div>
-
-<!--NG CONTAINER-->
-<ng-container *ngIf="product.quantity > 0; then templateThen else templateElse"></ng-container>
-
-<ng-template #templateThen>
-    <div>
-        <app-alert-product-details [isEnabledToBuy]="isEnabledToBuy" (clickAlert)="showAlert()" [product]="product">
-        </app-alert-product-details>
-    </div>
-</ng-template>
-
-<ng-template #templateElse>
-    <p>Product is not available to buy</p>
-</ng-template>

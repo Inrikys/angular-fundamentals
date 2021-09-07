@@ -1,15 +1,18 @@
 <div class="container">
 
-    <div class="mt-5">
+    <div [hidden]="!addedToCart" class="alert alert-success" role="alert">
+        {{highlightText}}
+    </div>
 
-        <div class="d-flex justify-content-between border p-4 rounded">
+    <div class="mt-5">
+        <div class="d-flex justify-content-evenly border p-4 rounded">
             <div>
                 <div>
                     <img src="{{product?.imgaddress}}">
                 </div>
                 <div class="mt-4 text-center">
                     <h2>{{product?.price | currency}}</h2>
-                    <button class="btn btn-primary mt-2 w-100"> Add to Cart</button>
+                    <button (click)="addToCart()" class="btn btn-primary mt-2 w-100"> Add to Cart</button>
                 </div>
             </div>
 

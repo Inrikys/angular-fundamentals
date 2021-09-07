@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Product } from 'src/app/interfaces/product';
+import { CartService } from 'src/app/services/cart/cart.service';
 import { ProductsService } from '../../services/products/products.service';
 
 @Component({
@@ -11,10 +12,13 @@ import { ProductsService } from '../../services/products/products.service';
 export class ProductComponent implements OnInit {
 
   public product!: Product;
+  public addedToCart: boolean = false;
+  public highlightText: string = 'This product was added in your cart!'
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private productsService: ProductsService,
+    private cartService: CartService,
   ) { }
 
   ngOnInit(): void {
@@ -29,5 +33,12 @@ export class ProductComponent implements OnInit {
 
   getProductById(id: number) {
     this.product = this.productsService.getProductById(id);
+  }
+
+  addToCart() {
+    this.addedToCart = !this.addedToCart;
+    if (this.cartService.verifyIfItemIsNotAdded(this.product)) {
+      this.cartService.addProductToCart(this.product);
+    }
   }
 }

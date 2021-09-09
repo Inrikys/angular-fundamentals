@@ -12,6 +12,8 @@ import { ProductsComponent } from './pages/products/products.component';
 import { HomeComponent } from './pages/home/home.component';
 import { CartComponent } from './pages/cart/cart.component';
 import { CartItemComponent } from './components/cart-item/cart-item.component';
+import { HttpClientModule } from '@angular/common/http';
+import { RegisterComponent } from './pages/register/register.component';
 
 @NgModule({
   declarations: [
@@ -24,11 +26,13 @@ import { CartItemComponent } from './components/cart-item/cart-item.component';
     ProductsComponent,
     HomeComponent,
     CartComponent,
-    CartItemComponent
+    CartItemComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

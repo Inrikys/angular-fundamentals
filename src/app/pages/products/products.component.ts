@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Product } from 'src/app/interfaces/product';
 import { ProductsService } from 'src/app/services/products/products.service';
 
@@ -8,7 +9,7 @@ import { ProductsService } from 'src/app/services/products/products.service';
   styleUrls: ['./products.component.scss']
 })
 export class ProductsComponent implements OnInit {
-  products!: Product[];
+  products$!: Observable<Product[]>;
   isEnabledToBuy: boolean = false;
 
   constructor(
@@ -20,7 +21,7 @@ export class ProductsComponent implements OnInit {
   }
 
   getProducts() {
-    this.products = this.ProductsService.getProducts();
+    this.products$ = this.ProductsService.getProducts();
   }
 
   changeBuyingStatus(){

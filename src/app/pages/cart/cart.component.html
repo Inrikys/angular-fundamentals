@@ -1,3 +1,29 @@
-<div *ngFor="let item of cart?.items">
-    <p>{{item.product.name}}</p>
+<div class="container">
+    <div class="row">
+        <!--Products-->
+        <div class="col-8">
+            <div class="card mt-5">
+                <div class="card-body">
+                    <h2>Products</h2>
+                    <div *ngFor="let item of cart?.items">
+                        <app-cart-item [cartItem]="item"></app-cart-item>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Totals-->
+        <div class="col-4">
+            <div class="card mt-5">
+                <div class="card-body">
+                    <h2>Summary</h2>
+                    <div>
+                        <p>Total: {{cart?.total | currency}}</p>
+                    </div>
+                    <div>
+                        <button class="btn btn-primary">Checkout</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

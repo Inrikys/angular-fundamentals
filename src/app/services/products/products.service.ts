@@ -1,24 +1,24 @@
 import { Injectable } from '@angular/core';
 import { Product } from 'src/app/interfaces/product';
 import { products } from 'src/app/data/products';
+import { environment } from 'src/environments/environment';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductsService {
 
-  constructor() { }
+  constructor(
+    private http: HttpClient,
+  ) { }
 
-  getProducts(): Product[] {
-    return products;
+  getProducts(): Observable<Product[]> {
+    return this.http.get<Product[]>(`${environment.api}products`);
   }
 
-  getProductById(id: number): Product {
-    const product = products.filter(data => {
-      return data.id === id
-    });
-
-    return product[0];
+  getProductById(id: number): Observable<Product> {
+    return this.http.get<Product>(`${environment.api}products/${id}`);
   }
-
 }

@@ -1,1 +1,31 @@
-<p>cart-item works!</p>
+<div class="border-top pb-3">
+    <div class="row my-4">
+        <div class="col">
+            <div class="d-flex">
+                <div class="cart-item-image-container">
+                    <img class="cart-item-image rounded" src="{{cartItem?.product?.imgaddress}}">
+                </div>
+                <p class="mb-0 product-name">{{cartItem?.product?.name}}</p>
+            </div>
+        </div>
+        <div class="col">
+            <p>Price: {{cartItem?.product?.price | currency}}</p>
+        </div>
+        <div class="col">
+            <p>Total: {{cartItem?.total | currency}}</p>
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="d-flex align-items-center">
+                <p class="mb-0 mr-2 unit-label">Unit:</p>
+                <div class="border rounded px-3 d-flex">
+                    <div class="change-qty" (click)="removeQty()">-</div>
+                    <div class="px-3">{{cartItem?.quantity}}</div>
+                    <div class="change-qty" (click)="addQty()">+</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

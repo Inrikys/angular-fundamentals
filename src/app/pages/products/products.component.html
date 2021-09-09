@@ -8,7 +8,7 @@
 
     <!--Products-->
     <div class="card border-primary">
-        <div class="p-4 border-bottom" *ngFor="let product of products">
+        <div class="p-4 border-bottom" *ngFor="let product of products$  | async">
             <app-product-details [isEnabledToBuy]="isEnabledToBuy" [product]="product"></app-product-details>
         </div>
     </div>
